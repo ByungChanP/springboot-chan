@@ -1,18 +1,30 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '4.1.0'
+    id 'io.spring.dependency-management' version '1.1.7'
+    // https://plugins.gradle.org/plugin/io.freefair.lombok
+    id 'io.freefair.lombok' version '9.5.0'
 }
 
 group = 'net.likelion.bebc25'
-version = '1.0-SNAPSHOT'
+version = '0.0.1-SNAPSHOT'
+description = 'spring-boot-intellij'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    // Source: https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
+
+    implementation("jakarta.annotation:jakarta.annotation-api:3.0.0")
+    implementation("org.springframework:spring-aspects:7.0.8")
     implementation("org.aspectj:aspectjweaver:1.9.25.1")
-    // Source: https://mvnrepository.com/artifact/org.springframework/spring-context
     implementation("org.springframework:spring-context:7.0.8")
     testImplementation platform('org.junit:junit-bom:6.0.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
